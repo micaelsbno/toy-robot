@@ -1,5 +1,5 @@
 require "toyrobot/robot"
-require "toyrobot/commands/commands"
+require "toyrobot/commands"
 require "table"
 
 RSpec.describe ToyRobot::Robot do

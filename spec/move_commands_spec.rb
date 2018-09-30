@@ -1,13 +1,12 @@
-require "toyrobot/robot"
-require "toyrobot/commands"
-require "table"
+require 'toyrobot/robot'
+require 'toyrobot/commands'
+require 'table'
 
 RSpec.describe ToyRobot::Commands do
-
   context 'Robot is placed in the middle of the board facing NORTH' do
     robot = ToyRobot::Robot.new
     table = Table.new(5)
-    position = {x: 2, y: 2, face: 'NORTH'}
+    position = { x: 2, y: 2, face: 'NORTH' }
     robot.place(table, position)
     subject { robot }
     describe '#move' do
@@ -17,7 +16,7 @@ RSpec.describe ToyRobot::Commands do
       end
 
       it 'tries to move beyond the table' do
-        6.times do subject.move end
+        6.times { subject.move }
         expect(subject.report).to eql('2,4,NORTH')
       end
     end
@@ -26,7 +25,7 @@ RSpec.describe ToyRobot::Commands do
   context 'Robot is placed in the middle of the board facing RIGHT' do
     robot = ToyRobot::Robot.new
     table = Table.new(5)
-    position = {x: 2, y: 2, face: 'RIGHT'}
+    position = { x: 2, y: 2, face: 'RIGHT' }
     robot.place(table, position)
     subject { robot }
     describe '#move' do
@@ -36,7 +35,7 @@ RSpec.describe ToyRobot::Commands do
       end
 
       it 'tries to move beyond the table' do
-        6.times do subject.move end
+        6.times { subject.move }
         expect(subject.report).to eql('4,2,RIGHT')
       end
     end
@@ -55,7 +54,7 @@ RSpec.describe ToyRobot::Commands do
       end
 
       it 'tries to move beyond the table' do
-        6.times do subject.move end
+        6.times { subject.move }
         expect(subject.report).to eql('2,0,SOUTH')
       end
     end
@@ -64,7 +63,7 @@ RSpec.describe ToyRobot::Commands do
   context 'Robot is placed in the middle of the board facing LEFT' do
     robot = ToyRobot::Robot.new
     table = Table.new(5)
-    position = {x: 2, y: 2, face: 'LEFT'}
+    position = { x: 2, y: 2, face: 'LEFT' }
     robot.place(table, position)
     subject { robot }
     describe '#move' do
@@ -74,10 +73,9 @@ RSpec.describe ToyRobot::Commands do
       end
 
       it 'tries to move beyond the table' do
-        6.times do subject.move end
+        6.times { subject.move }
         expect(subject.report).to eql('0,2,LEFT')
       end
     end
   end
-
 end

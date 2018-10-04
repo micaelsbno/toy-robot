@@ -3,9 +3,10 @@ require_relative 'error_checker'
 
 module ToyRobot
   # Defines robot's commands
-  class Commands < ErrorChecker
+  class Commands
+
     def place(table, position)
-      raise ArgumentError, 'Invalid command' unless valid_placing?(table, position)
+      raise ArgumentError, 'Invalid command' unless ErrorChecker.valid_placing?(table, position)
       self.position = Position.new(table, position)
     end
 
@@ -19,7 +20,7 @@ module ToyRobot
 
     def move
       return 'Please, place the robot first' unless placed?
-      return 'Invalid movement' unless valid_movement?
+      return 'Invalid movement' unless ErrorChecker.valid_movement?(self)
       case position.face.direction
       when 'NORTH'
         position.y += 1
